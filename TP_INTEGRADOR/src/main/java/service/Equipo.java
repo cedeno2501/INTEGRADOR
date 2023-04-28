@@ -28,64 +28,20 @@ public class Equipo {
         this.partidosJugados = partidosJugados;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
-    public String getTitulares() {
-        return titulares;
-    }
+    public static void mostrarTodo(){
 
-    public void setTitulares(String titulares) {
-        this.titulares = titulares;
-    }
-
-    public Integer getSuplentes() {
-        return suplentes;
-    }
-
-    public void setSuplentes(Integer suplentes) {
-        this.suplentes = suplentes;
-    }
-
-    public String getDirectorTecnico() {
-        return directorTecnico;
-    }
-
-    public void setDirectorTecnico(String directorTecnico) {
-        this.directorTecnico = directorTecnico;
-    }
-
-    public Integer getPuntos() {
-        return puntos;
-    }
-
-    public void setPuntos(Integer puntos) {
-        this.puntos = puntos;
-    }
-
-    public Integer getPartidosJugados() {
-        return partidosJugados;
-    }
-
-    public void setPartidosJugados(Integer partidosJugados) {
-        this.partidosJugados = partidosJugados;
-    }
-
-    public static Integer mostrarTodo(){
-        Integer contador=0;
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM equipos_argentina");
+            System.out.println("resultSet:"+ resultSet);
             System.out.println("id" + "|" + "nombre"+
                     "|" + "titulares" + "|" + "suplentes" + "|"
                     + "director" + "|" + "puntos" +
                     "|" + "partidos jugados");
+
             while(resultSet.next()){
-                contador++;
+
                 System.out.println(resultSet.getString("id") + "| " + resultSet.getString("nombre")+
                         "|   " + resultSet.getString("titulares") + "|   " + resultSet.getString("suplentes") + " |     "
                         + resultSet.getString("director_tecnico") + "   |     " + resultSet.getString("puntos") +
@@ -95,7 +51,7 @@ public class Equipo {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return contador;
+
     }
 
 
@@ -121,7 +77,7 @@ public class Equipo {
                             "|   " + result.getString("partidos_jugados"));
 
             } else{
-                System.out.println("No existe el equipo en nuestra base");
+                System.out.println("No existe el equipo, consulte la lista con la opcion 1");
             }
 
         } catch (SQLException ex) {
